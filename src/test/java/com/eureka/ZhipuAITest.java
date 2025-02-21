@@ -18,7 +18,7 @@ public class ZhipuAITest {
     public void testZhiPuAI() {
         String response;
         try {
-            response = zhiPuAIManager.doChat(new ChatMessage(ChatMessageRole.USER.value(), "天空为什么是蓝色的？"));
+            response = zhiPuAIManager.doChat(new ChatMessage(ChatMessageRole.USER.value(), "什么是DDOS攻击？"));
         } catch (Exception e) {
             throw new BusinessException(ErrorCode.THIRD_SERVICE_ERROR);
         }
