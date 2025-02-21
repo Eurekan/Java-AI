@@ -6,6 +6,7 @@ import com.zhipu.oapi.ClientV4;
 import com.zhipu.oapi.Constants;
 import com.zhipu.oapi.service.v4.model.ChatCompletionRequest;
 import com.zhipu.oapi.service.v4.model.ChatMessage;
+import com.zhipu.oapi.service.v4.model.ChatMessageRole;
 import com.zhipu.oapi.service.v4.model.ModelApiResponse;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -23,26 +24,8 @@ public class ZhiPuAIManager {
 
     public String doChat(ChatMessage chatMessage) {
         List<ChatMessage> messages = new ArrayList<>();
-        if (chatMessage == null) {
-            throw new BusinessException(ErrorCode.SYSTEM_ERROR);
-        }
-        messages.add(chatMessage);
-        ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
-                .model("glm-4-flash")
-                .stream(Boolean.FALSE)
-                .invokeMethod(Constants.invokeMethod)
-                .messages(messages)
-                .build();
-        ModelApiResponse invokeModelApiResp = clientV4.invokeModelApi(chatCompletionRequest);
-        String result = invokeModelApiResp.getData().getChoices().get(0).getMessage().getContent().toString();
-        log.info("ZhiPuAI Response: {}", result);
-        return result;
-    }
-
-    /*public String doChat(ChatMessage chatMessage) {
-        List<ChatMessage> messages = new ArrayList<>();
-        ChatMessage prompt = new ChatMessage(ChatMessageRole.SYSTEM.value(), "将我的输入的内容生成为英文，" +
-                "并且不要生成多余内容");
+        ChatMessage prompt = new ChatMessage(ChatMessageRole.SYSTEM.value(), "你是我的女朋友，" +
+                "请尽量用暧昧的语气");
         messages.add(prompt);
         if (chatMessage == null) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR);
@@ -58,5 +41,5 @@ public class ZhiPuAIManager {
         String result = invokeModelApiResp.getData().getChoices().get(0).getMessage().getContent().toString();
         log.info("ZhiPuAI Response: {}", result);
         return result;
-    }*/
+    }
 }

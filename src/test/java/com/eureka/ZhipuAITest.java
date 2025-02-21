@@ -18,7 +18,7 @@ public class ZhipuAITest {
     public void testZhiPuAI() {
         String response;
         try {
-            response = zhiPuAIManager.doChat(new ChatMessage(ChatMessageRole.USER.value(), "世界上最长的河流是哪个？"));
+            response = zhiPuAIManager.doChat(new ChatMessage(ChatMessageRole.USER.value(), "给我推荐一部布拉德·皮特的电影"));
         } catch (Exception e) {
             throw new BusinessException(ErrorCode.THIRD_SERVICE_ERROR);
         }
