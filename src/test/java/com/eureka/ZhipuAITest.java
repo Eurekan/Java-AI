@@ -18,7 +18,7 @@ public class ZhipuAITest {
     public void testZhiPuAI() {
         String response;
         try {
-            response = zhiPuAIManager.doChat(new ChatMessage(ChatMessageRole.USER.value(), "什么是DDOS攻击？"));
+            response = zhiPuAIManager.doChat(new ChatMessage(ChatMessageRole.USER.value(), "请为我讲解搏击俱乐部这部电影的内容？"));
         } catch (Exception e) {
             throw new BusinessException(ErrorCode.THIRD_SERVICE_ERROR);
         }
