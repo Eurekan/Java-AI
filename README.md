@@ -17,13 +17,13 @@
     <version>release-V4-2.0.2</version>
 </dependency>
 ```
-然后，建立 ChatGML4 智谱 AI 客户端，将你刚复制的 API Key 替换掉“apiSecretKey”。
+然后，建立 ChatGML4 智谱 AI 客户端，将你刚复制的 API Key 替换掉 apiSecretKey。
 ```java
 @Configuration
 public class ChatGLM4Config {
     @Bean
     public ClientV4 clientV4() {
-        return new ClientV4.Builder(ZhiPuAIConstant.ZHIPU_AI_API_KEY).build();
+        return new ClientV4.Builder("apiSecretKey").build();
     }
 }
 ```
