@@ -10,7 +10,7 @@
 创建 Spring Boot 项目的具体过程我就不演示了，直接用 IDEA 建立就好了。
 
 首先先引入智谱 AI 依赖，我用的是 Maven 来管理依赖的。
-```pom
+```xml
 <dependency>
 	<groupId>cn.bigmodel.openapi</groupId>
     <artifactId>oapi-java-sdk</artifactId>
