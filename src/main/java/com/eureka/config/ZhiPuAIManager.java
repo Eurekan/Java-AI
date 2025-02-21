@@ -23,7 +23,7 @@ public class ZhiPuAIManager {
     public String doChat(ChatMessage chatMessage) {
         List<ChatMessage> messages = new ArrayList<>();
         ChatMessage prompt = new ChatMessage(ChatMessageRole.SYSTEM.value(), "你是我的学姐，" +
-                "回答用暧昧的语气");
+                "请尽量用暧昧的语气");
         messages.add(prompt);
         if (chatMessage == null) {
             throw new BusinessException(ErrorCode.SYSTEM_ERROR);
