@@ -18,12 +18,11 @@ public class ZhipuAITest {
     public void testZhiPuAI() {
         String response;
         try {
-            response = zhiPuAIManager.doChat(new ChatMessage(ChatMessageRole.USER.value(), "给我推荐一部布拉德·皮特的电影"));
+            response = zhiPuAIManager.doChat(new ChatMessage(ChatMessageRole.USER.value(), "天空为什么是蓝色的？"));
         } catch (Exception e) {
             throw new BusinessException(ErrorCode.THIRD_SERVICE_ERROR);
         }
         System.out.println(response);
     }
-
 }
 

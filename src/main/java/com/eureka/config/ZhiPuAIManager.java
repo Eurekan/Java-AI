@@ -4,27 +4,25 @@ import com.eureka.common.ErrorCode;
 import com.eureka.exception.BusinessException;
 import com.zhipu.oapi.ClientV4;
 import com.zhipu.oapi.Constants;
-import com.zhipu.oapi.service.v4.model.ChatCompletionRequest;
-import com.zhipu.oapi.service.v4.model.ChatMessage;
-import com.zhipu.oapi.service.v4.model.ChatMessageRole;
-import com.zhipu.oapi.service.v4.model.ModelApiResponse;
+import com.zhipu.oapi.service.v4.model.*;
 import jakarta.annotation.Resource;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 @Component
 public class ZhiPuAIManager {
 
     @Resource
     private ClientV4 clientV4;
 
+    /**
+     * 同步调用
+     */
     public String doChat(ChatMessage chatMessage) {
         List<ChatMessage> messages = new ArrayList<>();
-        ChatMessage prompt = new ChatMessage(ChatMessageRole.SYSTEM.value(), "你是我的女朋友，" +
+        ChatMessage prompt = new ChatMessage(ChatMessageRole.SYSTEM.value(), "你是我的学姐，" +
                 "请尽量用暧昧的语气");
         messages.add(prompt);
         if (chatMessage == null) {
@@ -38,8 +36,6 @@ public class ZhiPuAIManager {
                 .messages(messages)
                 .build();
         ModelApiResponse invokeModelApiResp = clientV4.invokeModelApi(chatCompletionRequest);
-        String result = invokeModelApiResp.getData().getChoices().get(0).getMessage().getContent().toString();
-        log.info("ZhiPuAI Response: {}", result);
-        return result;
+        return invokeModelApiResp.getData().getChoices().get(0).getMessage().getContent().toString();
     }
 }
