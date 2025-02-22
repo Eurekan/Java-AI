@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 public class ChatCompletionsExample {
-    static String apiKey = "b100c324-79b7-4340-97aa-3e556a926156";
+    static String apiKey = "API Key";
     static ConnectionPool connectionPool = new ConnectionPool(5, 1, TimeUnit.SECONDS);
     static Dispatcher dispatcher = new Dispatcher();
     // The output time of the reasoning model is relatively long. Please increase the timeout period.
