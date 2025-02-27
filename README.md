@@ -97,7 +97,7 @@ public class ZhipuAITest {
 ![img_5.png](img/img_5.png)
 如果你想要给 AI 定义 prompt 的话，只要添加一个 system 的 role，并将其 add 到 list 就好了。具体实现如下：
 ```java
-    public String doChat(ChatMessage chatMessage) {
+public String doChat(ChatMessage chatMessage) {
     List<ChatMessage> messages = new ArrayList<>();
     ChatMessage prompt = new ChatMessage(ChatMessageRole.SYSTEM.value(), "将我的输入的内容生成为英文，" +
             "并且不要生成多余内容");
