@@ -91,7 +91,6 @@ public class ZhipuAITest {
         }
         System.out.println(response);
     }
-
 }
 ```
 ![img_5.png](img/img_5.png)
