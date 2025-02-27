@@ -10,7 +10,7 @@
 创建 Spring Boot 项目的具体过程我就不演示了，直接用 IDEA 建立就好了。
 
 首先先引入智谱 AI 依赖，我用的是 Maven 来管理依赖的。
-```xml
+ ```xml
 <dependency>
 	<groupId>cn.bigmodel.openapi</groupId>
     <artifactId>oapi-java-sdk</artifactId>
@@ -65,7 +65,7 @@ public class ZhiPuAIManager {
                 .messages(messages)
                 .build();
         ModelApiResponse invokeModelApiResp = clientV4.invokeModelApi(chatCompletionRequest);
-        String result = invokeModelApiResp.getData().getChoices().get(0).getMessage().getContent().toString();
+        String result = invokeModelApiResp.getData().getChoices().getFirst().getMessage().getContent().toString();
         log.info("ZhiPuAI Response: {}", result);
         return result;
     }
@@ -83,7 +83,7 @@ public class ZhipuAITest {
 
     @Test
     public void testZhiPuAI() {
-        String response = null;
+        String response;
         try {
             response = zhiPuAIManager.doChat(new ChatMessage(ChatMessageRole.USER.value(), "你好，你是谁？"));
         } catch (Exception e) {
