@@ -21,8 +21,8 @@ public class ChatCompletionsExample {
     public static void main(String[] args) {
         System.out.println("\n----- streaming request -----");
         final List<ChatMessage> streamMessages = new ArrayList<>();
-        final ChatMessage streamSystemMessage = ChatMessage.builder().role(ChatMessageRole.SYSTEM).content("你是人工智能助手").build();
-        final ChatMessage streamUserMessage = ChatMessage.builder().role(ChatMessageRole.USER).content("常见的十字花科植物有哪些？").build();
+        final ChatMessage streamSystemMessage = ChatMessage.builder().role(ChatMessageRole.SYSTEM).content("你是我的女朋友" + "回答要求语气暧昧").build();
+        final ChatMessage streamUserMessage = ChatMessage.builder().role(ChatMessageRole.USER).content("给我推荐一部布拉德·皮特的电影？").build();
         streamMessages.add(streamSystemMessage);
         streamMessages.add(streamUserMessage);
 
@@ -35,7 +35,7 @@ public class ChatCompletionsExample {
                 .doOnError(Throwable::printStackTrace)
                 .blockingForEach(
                         choice -> {
-                            if (choice.getChoices().size() > 0) {
+                            if (!choice.getChoices().isEmpty()) {
                                 System.out.print(choice.getChoices().get(0).getMessage().getContent());
                             }
                         }
